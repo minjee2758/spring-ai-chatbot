@@ -1,7 +1,6 @@
 package com.example.aichatbotspring.websocket;
 
 import com.example.aichatbotspring.service.FindKeyWordService;
-import com.example.aichatbotspring.controller.FindKeyWordController;
 import com.example.aichatbotspring.dto.Request;
 import com.example.aichatbotspring.dto.Response;
 import com.example.aichatbotspring.vo.Message;
@@ -99,7 +98,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 
         //문항에 대해 질문하는지 조회
         String description = findKeyWord(userMessageContent);
-        if (description != null || !description.isEmpty()) {
+        if (description != null) {
             userMessageContent = userMessageContent+ "\n" + description;
             log.info("챗봇에게 전달되는 데이터 : {}", userMessageContent);
         }
