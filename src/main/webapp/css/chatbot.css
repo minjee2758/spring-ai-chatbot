@@ -112,6 +112,15 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* hover:shadow-xl */
 }
 
+.fab-button:focus {
+    outline : 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.fab-button:focus:not(:focus-visible){
+    outline: none;
+}
+
 .fab-button .icon-message-circle {
     width: 1.5rem; /* 24px */
     height: 1.5rem;

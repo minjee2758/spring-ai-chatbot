@@ -5,7 +5,7 @@
     <div class="fab-tooltip-arrow"></div>
 </div>
 <button id="fabChatbotButton" aria-label="챗봇 열기">
-    <img src="${pageContext.request.contextPath}/resources/common/img/mini-robot.png" width="2rem" class= "fab-button" alt="챗봇 버튼" />
+    <img src="${pageContext.request.contextPath}/resources/common/img/mini-robot.png" class= "fab-button" alt="챗봇 버튼" />
 </button>
 
 <div id="chatbotModalOverlay" class="modal-overlay">

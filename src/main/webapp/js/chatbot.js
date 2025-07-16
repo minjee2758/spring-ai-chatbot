@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendMessageButton = document.getElementById('sendMessageButton');
 
     // --- 상수 정의 ---
-    const WEBSOCKET_URL = 'ws://localhost:8080/ws/chat'; // 서버의 WebSocketConfig와 일치하는지 다시 확인!
+    const WEBSOCKET_URL = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/chat`;
     const CHAT_SESSION_PREFIX = 'chat_session_'; // 로컬 스토리지 키 접두사
+    const BOT_AVATAR_PATH = '/resources/common/img/robot-icon.png';
 
     // --- 상태 변수 ---
     let ws; // 웹소켓 인스턴스
@@ -158,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             avatar.appendChild(createSvgIcon('user', 12, 12, 'icon-user'));
         } else {
             const botImage = document.createElement('img');
-            botImage.src = '/resources/common/img/robot-icon.png'; // 봇 아바타 이미지 경로
+            botImage.src = BOT_AVATAR_PATH; // 봇 아바타 이미지 경로
             botImage.alt = 'Bot Avatar';
             botImage.classList.add('bot-avatar-image');
             avatar.appendChild(botImage);

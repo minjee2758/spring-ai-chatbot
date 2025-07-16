@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 @Slf4j
 public class ChatWebSocketHandler extends TextWebSocketHandler {
-    @Value("${GPT_MODEL}")
+    @Value("${openai.gpt.model}")
     private String gptModel;
 
     private final ObjectMapper objectMapper;
@@ -74,7 +74,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
             if (!jsonNode.has("type") && !"initialChatHistory".equals(jsonNode.get("type").asText())) {
                 throw new Exception("JSON 파싱 실패");
             }
-            if (chatHistoryNode == null && chatHistoryNode.isEmpty()) {
+            if (chatHistoryNode == null || chatHistoryNode.isEmpty()) {
                 throw new Exception("세션에서 로컬 스토리지 채팅 내역이 없습니다.");
             }
 

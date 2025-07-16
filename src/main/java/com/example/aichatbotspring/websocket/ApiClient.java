@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 public class ApiClient {
     private final RestTemplate restTemplate;
 
-    @Value("${GPT_URL}")
+    @Value("${openai.gpt.url}")
     private String gptUrl;
 
-    @Value("${GPT_KEY}")
+    @Value("${openai.gpt.key}")
     private String gptApiKey;
 
 
@@ -38,7 +38,9 @@ public class ApiClient {
                 Response.class     // 응답을 String으로 받음 (나중에 응답 DTO로 변경 가능)
         );
 
-        if (responseEntity.getBody().getChoices().isEmpty() || responseEntity.getBody().getChoices() == null) {
+        Response response = responseEntity.getBody();
+
+        if (response==null || response.getChoices()==null || response.getChoices().isEmpty()) {
             throw new IllegalStateException("답변을 받지 못했습니다");
         }
 

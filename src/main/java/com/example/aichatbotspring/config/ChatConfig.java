@@ -8,12 +8,12 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ChatConfig {
     @Bean
-    public RestTemplate RestTemplate() {
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
     @Bean
-    public ObjectMapper ObjectMapper() {
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 }
