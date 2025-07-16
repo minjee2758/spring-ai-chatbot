@@ -1,5 +1,7 @@
 package com.example.aichatbotspring.websocket;
 
+import com.example.aichatbotspring.service.FindKeyWordService;
+import com.example.aichatbotspring.controller.FindKeyWordController;
 import com.example.aichatbotspring.dto.Request;
 import com.example.aichatbotspring.dto.Response;
 import com.example.aichatbotspring.vo.Message;
@@ -24,23 +26,18 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     @Value("${openai.gpt.model}")
     private String gptModel;
 
+    private final FindKeyWordService findKeyWordService;
     private final ObjectMapper objectMapper;
     private final ApiClient apiClient;
 
-    public ChatWebSocketHandler(ObjectMapper objectMapper, ApiClient apiClient) {
+    public ChatWebSocketHandler(FindKeyWordService findKeyWordService, ObjectMapper objectMapper, ApiClient apiClient) {
+        this.findKeyWordService = findKeyWordService;
         this.objectMapper = objectMapper;
         this.apiClient = apiClient;
     }
 
     private static final String GPT_PROMPT =
-            "당신은 기업가를 돕는 10년차 창업과 리더십 전문 챗봇 어시스턴트입니다. " +
-                    "저는 기업가이지만 숙련되지는 않았습니다. 가능한 쉽게, " +
-                    "핵심을 알기 쉬운 다양한 예시를 들어가며 설명해 주세요." +
-                    "허위 정보를 생성하지 마세요." +
-                    "모든 답변은 친절하고 간결하게, 200자를 넘지 않도록 합니다. " +
-                    "창업, 기업, 리더십 등의 주제와 조금이라도 연결점이 없는 내용에는 답변하지 마세요.\n" +
-                    "\n" +
-                    "내용이 길어질 경우, 마크업 언어를 사용해 전달합니다.";
+            ""; //원하는 프롬프트 작성
 
 
     private final Map<String, List<Message>> chattingHistory = new ConcurrentHashMap<>();
@@ -100,7 +97,14 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 
         String userMessageContent = payload;
 
+        //문항에 대해 질문하는지 조회
+        String description = findKeyWord(userMessageContent);
+        if (description != null || !description.isEmpty()) {
+            userMessageContent = userMessageContent+ "\n" + description;
+            log.info("챗봇에게 전달되는 데이터 : {}", userMessageContent);
+        }
         currentHistory.add(new Message("user", userMessageContent));
+
 
         Request userRequest = new Request(
                 gptModel,
@@ -122,6 +126,30 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 
 
     }
+
+    public String findKeyWord(String userMessage){
+        List<String> subjects = findKeyWordService.getAllSubjects();
+
+        boolean found = false;
+        String foundSubject = null;
+
+        for (String subject : subjects) {
+            if (userMessage.contains(subject)) {
+                found = true;
+                foundSubject = subject;
+                break;
+            }
+        }
+
+        if (found) {
+            return foundSubject +" : " + findKeyWordService.find(foundSubject);
+        }
+        else {
+            return null;
+        }
+
+    }
+
     /*
 3. 웹소켓 연결이 종료
 */
