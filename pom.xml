@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
+        <group"id">org.springframework.boot</group"id">
+        <artifact"id">spring-boot-starter-parent</artifact"id">
         <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>ai-chatbot-spring</artifactId>
+    <group"id">com.example</group"id">
+    <artifact"id">ai-chatbot-spring</artifact"id">
     <version>0.0.1-SNAPSHOT</version>
     <name>ai-chatbot-spring</name>
     <description>ai-chatbot-spring</description>
@@ -32,32 +32,32 @@
     <dependencies>
         <!--JSP를 사용하기 위해 jasper 의존성 추가 -->
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
+            <group"id">org.apache.tomcat.embed</group"id">
+            <artifact"id">tomcat-embed-jasper</artifact"id">
         </dependency>
         <!--웹소켓 의존성 추가-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
+            <group"id">org.springframework.boot</group"id">
+            <artifact"id">spring-boot-starter-websocket</artifact"id">
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <group"id">org.springframework.boot</group"id">
+            <artifact"id">spring-boot-starter-web</artifact"id">
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <group"id">org.projectlombok</group"id">
+            <artifact"id">lombok</artifact"id">
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <group"id">org.springframework.boot</group"id">
+            <artifact"id">spring-boot-starter-test</artifact"id">
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.genai</groupId>
-            <artifactId>google-genai</artifactId>
+            <group"id">com.google.genai</group"id">
+            <artifact"id">google-genai</artifact"id">
             <version>1.7.0</version>
         </dependency>
     </dependencies>
@@ -65,25 +65,25 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <group"id">org.apache.maven.plugins</group"id">
+                <artifact"id">maven-compiler-plugin</artifact"id">
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
+                            <group"id">org.projectlombok</group"id">
+                            <artifact"id">lombok</artifact"id">
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <group"id">org.springframework.boot</group"id">
+                <artifact"id">spring-boot-maven-plugin</artifact"id">
                 <configuration>
                     <excludes>
                         <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
+                            <group"id">org.projectlombok</group"id">
+                            <artifact"id">lombok</artifact"id">
                         </exclude>
                     </excludes>
                 </configuration>

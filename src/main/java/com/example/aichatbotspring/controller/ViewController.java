@@ -9,4 +9,14 @@ public class ViewController {
     public String showChatbotPage(){
         return "chatbot";
     }
+
+    @GetMapping("/main")
+    public String showMainPage(){
+        return "main";
+    }
+
+    @GetMapping("/test")
+    public String showTestPage(){
+        return "test";
+    }
 }

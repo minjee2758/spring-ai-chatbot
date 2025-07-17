@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AiChatbotSpringApplicationTests {
 
     @Test
-    void contextLoads() {
+    vo"id" contextLoads() {
     }
 
 }

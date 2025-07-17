@@ -26,7 +26,7 @@ public class FindKeyWordService {
     }
 
     @PostConstruct
-    public void initExplanations() { // 메서드 이름도 initExplanations로 명확하게 변경 권장
+    public void initExplanations() {
         try {
             ClassPathResource resource = new ClassPathResource("explanations.json");
             try (InputStream inputStream = resource.getInputStream()) {
@@ -66,7 +66,7 @@ public class FindKeyWordService {
                 .filter(q -> questionId.equals(q.get("id")))
                 .findFirst();
 
-        return foundQuestions.map(q -> q.get("description"))
+        return foundQuestions.map(q -> q.get("question"))
                 .orElse("요청하신 문항의 정보를 찾을 수 없습니다.");
     }
 

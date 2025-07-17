@@ -36,7 +36,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     }
 
     private static final String GPT_PROMPT =
-            ""; //원하는 프롬프트 작성
+            "창업과 리더십에 관련된 질문에만 대답한다. 허위정보를 전달하지 않는다. 한국말로 대답한다. 정중하고 간결하게 대답"; //원하는 프롬프트 작성
 
 
     private final Map<String, List<Message>> chattingHistory = new ConcurrentHashMap<>();
@@ -169,7 +169,4 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     }
 
 
-
-
 }
-
