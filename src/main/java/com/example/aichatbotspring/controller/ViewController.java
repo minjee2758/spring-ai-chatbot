@@ -19,4 +19,9 @@ public class ViewController {
     public String showTestPage(){
         return "test";
     }
+
+    @GetMapping("/drag-test")
+    public String showDragTestPage(){
+        return "drag-test";
+    }
 }

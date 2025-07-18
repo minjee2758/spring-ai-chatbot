@@ -34,5 +34,5 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="../../js/drag.js"></script>
+<%--<script src="../../js/drag.js"></script>--%>
 <script src="../../js/chatbot.js"></script>

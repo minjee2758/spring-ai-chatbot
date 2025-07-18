@@ -36,7 +36,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     }
 
     private static final String GPT_PROMPT =
-            "창업과 리더십에 관련된 질문에만 대답한다. 허위정보를 전달하지 않는다. 한국말로 대답한다. 정중하고 간결하게 대답"; //원하는 프롬프트 작성
+            "허위정보를 전달하지 않는다. 한국말로 대답한다. 정중하고 간결하게 대답"; //원하는 프롬프트 작성
 
 
     private final Map<String, List<Message>> chattingHistory = new ConcurrentHashMap<>();
@@ -56,7 +56,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 
 
     @Override
-    protected void handleTextMessage(WebSocketSession session, org.springframework.web.socket.TextMessage message) throws Exception {
+    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String payload = message.getPayload();
 
         List<Message> currentHistory = chattingHistory.computeIfAbsent(session.getId(), k -> new ArrayList<>());

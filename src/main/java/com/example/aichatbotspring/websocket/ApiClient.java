@@ -7,12 +7,16 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+/*
+    인공지능을 호출하고 답변을 받아내는 클래스
+ */
 @Component
 public class ApiClient {
     private final RestTemplate restTemplate;
 
     @Value("${openai.gpt.url}")
     private String gptUrl;
+
 
     @Value("${openai.gpt.key}")
     private String gptApiKey;
@@ -27,15 +31,13 @@ public class ApiClient {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON); //json타입으로 설정하기
         httpHeaders.setBearerAuth(gptApiKey); //api키 넣기
 
-
         HttpEntity<Request> requestEntity = new HttpEntity<>(request, httpHeaders);
-
 
         ResponseEntity<Response> responseEntity = restTemplate.exchange(
                 gptUrl,
                 HttpMethod.POST, // HTTP POST 메서드
                 requestEntity,   // 헤더와 본문을 포함한 HttpEntity
-                Response.class     // 응답을 String으로 받음 (나중에 응답 DTO로 변경 가능)
+                Response.class
         );
 
         Response response = responseEntity.getBody();

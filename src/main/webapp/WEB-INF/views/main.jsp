@@ -11,7 +11,7 @@
 <!-- Header -->
 <header class="header">
     <div class="container">
-        <h1 class="header-title">📓 Start-Up SPOT</h1>
+        <h1 class="header-title">📓 Start-Up NOTE</h1>
         <p class="header-subtitle">스타트업 아이디어부터 사업 계획까지, 모든 창업 준비 과정을 체계적으로 정리해보세요.</p>
     </div>
 </header>
@@ -80,60 +80,64 @@
     </div>
 </main>
 
-<!-- Floating Action Button -->
-<button id="fab" class="fab">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <line x1="12" y1="5" x2="12" y2="19"/>
-        <line x1="5" y1="12" x2="19" y2="12"/>
-    </svg>
-</button>
+<%--<!-- Floating Action Button -->--%>
+<%--<button id="fab" class="fab">--%>
+<%--    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">--%>
+<%--        <line x1="12" y1="5" x2="12" y2="19"/>--%>
+<%--        <line x1="5" y1="12" x2="19" y2="12"/>--%>
+<%--    </svg>--%>
+<%--</button>--%>
 
-<!-- Modal -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modal-title">새 메모 작성</h2>
-            <button id="modal-close" class="modal-close">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
-        </div>
-        <form id="memo-form" class="modal-form">
-            <div class="form-group">
-                <label for="memo-category">카테고리</label>
-                <select id="memo-category" class="form-select">
-                    <option value="idea">아이디어 정리</option>
-                    <option value="market">시장 조사</option>
-                    <option value="pitch">피치덱 작성</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="memo-title">제목</label>
-                <input type="text" id="memo-title" class="form-input" placeholder="메모 제목을 입력하세요">
-            </div>
-            <div class="form-group">
-                <label for="memo-content">내용</label>
-                <textarea id="memo-content" class="form-textarea" placeholder="마크다운 형식으로 자유롭게 작성하세요...
+<%--<!-- Modal -->--%>
+<%--<div id="modal" class="modal">--%>
+<%--    <div class="modal-content">--%>
+<%--        <div class="modal-header">--%>
+<%--            <h2 id="modal-title">새 메모 작성</h2>--%>
+<%--            <button id="modal-close" class="modal-close">--%>
+<%--                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">--%>
+<%--                    <line x1="18" y1="6" x2="6" y2="18"/>--%>
+<%--                    <line x1="6" y1="6" x2="18" y2="18"/>--%>
+<%--                </svg>--%>
+<%--            </button>--%>
+<%--        </div>--%>
 
-예시:
-# 제목
-## 소제목
-- 리스트 항목
-**굵은 글씨**
-*기울임*"></textarea>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn-primary">작성하기</button>
-                <button type="button" id="cancel-btn" class="btn-secondary">취소</button>
-            </div>
-        </form>
-    </div>
+<%--        <form id="memo-form" class="modal-form">--%>
+<%--            <div class="form-group">--%>
+<%--                <label for="memo-category">카테고리</label>--%>
+<%--                <select id="memo-category" class="form-select">--%>
+<%--                    <option value="idea">아이디어 정리</option>--%>
+<%--                    <option value="market">시장 조사</option>--%>
+<%--                    <option value="pitch">피치덱 작성</option>--%>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--            <div class="form-group">--%>
+<%--                <label for="memo-title">제목</label>--%>
+<%--                <input type="text" id="memo-title" class="form-input" placeholder="메모 제목을 입력하세요">--%>
+<%--            </div>--%>
+<%--            <div class="form-group">--%>
+<%--                <label for="memo-content">내용</label>--%>
+<%--                <textarea id="memo-content" class="form-textarea" placeholder="마크다운 형식으로 자유롭게 작성하세요...--%>
+
+<%--예시:--%>
+<%--# 제목--%>
+<%--## 소제목--%>
+<%--- 리스트 항목--%>
+<%--**굵은 글씨**--%>
+<%--*기울임*"></textarea>--%>
+<%--            </div>--%>
+<%--            <div class="form-actions">--%>
+<%--                <button type="submit" class="btn-primary">작성하기</button>--%>
+<%--                <button type="button" id="cancel-btn" class="btn-secondary">취소</button>--%>
+<%--            </div>--%>
+<%--        </form>--%>
+
+<%--    </div>--%>
 </div>
-<script src="../../js/drag.js"></script>
-<script src="../../js/main.js"></script>
+<%--<script src="../../js/drag.js"></script>--%>
+<%--<script src="../../js/main.js"></script>--%>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<%--<jsp:include page="../views/drag-chat.jsp" />--%>
+<jsp:include page="../views/chatbot.jsp" />
+<jsp:include page="../views/floatingBar.jsp" />
 </html>
-<%--<jsp:include page="../views/chatbot.jsp" />--%>

@@ -24,4 +24,11 @@ public class Response {
         @JsonProperty("finish_reason")
         private String finishReason;
     }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Drag{
+        private String assistance;
+    }
 }

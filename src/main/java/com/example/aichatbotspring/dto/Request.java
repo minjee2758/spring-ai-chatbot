@@ -14,4 +14,11 @@ public class Request {
     private String model;
     private List<Message> messages;
 
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Drag{
+        private String model;
+        private String input;
+    }
 }

@@ -28,14 +28,14 @@ public class FindKeyWordService {
     @PostConstruct
     public void initExplanations() {
         try {
-            ClassPathResource resource = new ClassPathResource("explanations.json");
+            ClassPathResource resource = new ClassPathResource("excellence/excellence_e1.json");
             try (InputStream inputStream = resource.getInputStream()) {
                 explanationsData = objectMapper.readValue(inputStream, new TypeReference<List<Map<String, String>>>() {});
-                log.info("explanations.json 파일이 성공적으로 로드되었습니다. 항목 수: {}", explanationsData.size());
+                log.info("excellence_e1.json 파일이 성공적으로 로드되었습니다. 항목 수: {}", explanationsData.size());
             }
         } catch (IOException e) {
             // 오류 메시지를 더 구체적으로 변경
-            log.error("explanations.json 파일을 찾거나 읽는 데 실패했습니다. 파일 경로를 확인해주세요.", e);
+            log.error("excellence_e1.json 파일을 찾거나 읽는 데 실패했습니다. 파일 경로를 확인해주세요.", e);
             explanationsData = List.of();
         }
     }
@@ -43,7 +43,7 @@ public class FindKeyWordService {
     @PostConstruct
     public void initSubject() {
         try {
-            ClassPathResource resource = new ClassPathResource("explanations-id.json");
+            ClassPathResource resource = new ClassPathResource("excellence/excellence_e1_id.json");
             try (InputStream inputStream = resource.getInputStream()) {
                 subjects = objectMapper.readValue(inputStream, new TypeReference<>() {
                 });
