@@ -1,5 +1,6 @@
 package com.example.aichatbotspring.service;
 
+import com.example.aichatbotspring.vo.QuestionItem;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @Service
 public class FindKeyWordService {
 
-    private List<Map<String, String>> explanationsData;
+    private List<QuestionItem> questionItemList;
     private List<String> subjects;
     private final ObjectMapper objectMapper;
 
@@ -30,13 +31,12 @@ public class FindKeyWordService {
         try {
             ClassPathResource resource = new ClassPathResource("excellence/excellence_e1.json");
             try (InputStream inputStream = resource.getInputStream()) {
-                explanationsData = objectMapper.readValue(inputStream, new TypeReference<List<Map<String, String>>>() {});
-                log.info("excellence_e1.json 파일이 성공적으로 로드되었습니다. 항목 수: {}", explanationsData.size());
+                questionItemList = objectMapper.readValue(inputStream, new TypeReference<List<QuestionItem>>() {});
+                log.info("excellence_e1.json 파일이 성공적으로 로드되었습니다. 항목 수: {}", questionItemList.size());
             }
         } catch (IOException e) {
-            // 오류 메시지를 더 구체적으로 변경
             log.error("excellence_e1.json 파일을 찾거나 읽는 데 실패했습니다. 파일 경로를 확인해주세요.", e);
-            explanationsData = List.of();
+            questionItemList = List.of();
         }
     }
 
@@ -50,7 +50,7 @@ public class FindKeyWordService {
             }
         } catch (IOException e) {
             log.error("리스트로 초기화 실패", e);
-            explanationsData = List.of(); // 오류 시 빈 리스트로 초기화
+            subjects = List.of(); // 오류 시 빈 리스트로 초기화
         }
 
     }
@@ -62,11 +62,11 @@ public class FindKeyWordService {
             return "정보를 로드하지 못했습니다.";
         }
 
-        Optional<Map<String, String >> foundQuestions = explanationsData.stream()
-                .filter(q -> questionId.equals(q.get("id")))
+        Optional<QuestionItem> foundQuestions = questionItemList.stream()
+                .filter(q -> questionId.equals(q.getSubject()))
                 .findFirst();
 
-        return foundQuestions.map(q -> q.get("question"))
+        return foundQuestions.map(QuestionItem::getDescription)
                 .orElse("요청하신 문항의 정보를 찾을 수 없습니다.");
     }
 

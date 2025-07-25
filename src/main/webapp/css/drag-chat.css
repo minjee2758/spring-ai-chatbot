@@ -108,6 +108,7 @@
     background-color: #f0f0f0; /* 배경색은 응답 영역과 동일하게 */
     padding: 5px 10px;
     border-radius: 8px;
+    z-index: 10000;
 }
 
 .typing-dots {

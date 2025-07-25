@@ -42,4 +42,4 @@
     </div>
 </div>
 
-<script src="../../js/drag-test.js"></script>
+<%--<script src="../../js/drag-test.js"></script>--%>

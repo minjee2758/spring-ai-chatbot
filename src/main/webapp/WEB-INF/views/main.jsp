@@ -137,7 +137,7 @@
 <%--<script src="../../js/main.js"></script>--%>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<%--<jsp:include page="../views/drag-chat.jsp" />--%>
+<jsp:include page="../views/drag-chat.jsp" />
 <jsp:include page="../views/chatbot.jsp" />
 <jsp:include page="../views/floatingBar.jsp" />
 </html>
